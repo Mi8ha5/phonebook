@@ -15,7 +15,10 @@ router.get('/static/:filename', function(req,res){
   fs.readdir(path.join(process.cwd(), 'static'), function(err, files){
     if (err) return res.sendStatus(500);
     console.log("Список файлов:", files);
+    router.get('/static', function(req,res){
+      res.send(files);
+    });
   });
-})
+});
 app.use(router);
 app.listen(8080);
