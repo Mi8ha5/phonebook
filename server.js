@@ -17,9 +17,9 @@ router.get('/static/:filename', function(req,res){
     if (err) return res.sendStatus(500);
     for (var i = 0; i < files.length; i++)
     {
-      if (i==req.params.filename)
+      if (files[i]===req.params.filename)
        {
-        console.log("Есть совпадения", i)
+        console.log("Есть совпадения", files[i])
       }
         else { console.log("Нет совпадений")
       }
