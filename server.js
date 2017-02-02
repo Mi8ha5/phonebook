@@ -12,13 +12,24 @@ router.get('/', function(req,res){
 router.get('/static/:filename', function(req,res){
   // res.sendFile(path.join(process.cwd(), ''))
   res.send(req.params.filename);
+
   fs.readdir(path.join(process.cwd(), 'static'), function(err, files){
     if (err) return res.sendStatus(500);
-    console.log("Список файлов:", files);
-    router.get('/static', function(req,res){
-      res.send(files);
-    });
+    for (var i = 0; i < files.length; i++)
+    {
+      if (i==req.params.filename)
+       {
+        console.log("Есть совпадения", i)
+      }
+        else { console.log("Нет совпадений")
+      }
+    }
+
+   router.get('/static', function(req,res){
+    res.send(files);
   });
-});
+    console.log("Список файлов:", files);
+  });
+  });
 app.use(router);
 app.listen(8080);
