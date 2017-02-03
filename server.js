@@ -11,7 +11,7 @@ router.get('/', function(req,res){
 });
 router.get('/static/:filename', function(req,res){
   // res.sendFile(path.join(process.cwd(), ''))
-  res.send(req.params.filename);
+  // res.send(req.params.filename);
 
   fs.readdir(path.join(process.cwd(), 'static'), function(err, files){
     if (err) return res.sendStatus(500);
@@ -20,14 +20,16 @@ router.get('/static/:filename', function(req,res){
       if (files[i]===req.params.filename)
        {
         console.log("Есть совпадения", files[i])
+
+        return res.sendFile(path.join(process.cwd() , '/static', files[i]))
       }
         else { console.log("Нет совпадений")
       }
-    }
+    };
 
-   router.get('/static', function(req,res){
-    res.send(files);
-  });
+  //   router.get('/static', function(req,res){
+  //   res.send(files);
+  // });
     console.log("Список файлов:", files);
   });
   });
