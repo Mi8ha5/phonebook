@@ -10,10 +10,18 @@ $.getJSON( "phonebook.json", function(data) {
     //$('#'+'b'+item.id).text('СОХРАНИТЬ');
     $('#'+'b'+item.id).click(function (){
       var phbook = {
-        "id" : item.id;
-        "phone" : $('#'+item.id+item.name).val();
+        "id" : item.id,
+        "phone" : $('#'+item.id+item.name).val(),
       };
       alert($('#'+item.id+item.name).val());
+      $.ajax({
+        url: 'update.json',
+        type: 'POST',
+        data: 'pbook=' + JSON.stringify(phbook),
+      success: function(res){
+        alert(res);
+      }
+    });
     });
   });
  });
