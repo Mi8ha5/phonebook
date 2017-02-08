@@ -15,9 +15,11 @@ $.getJSON( "phonebook.json", function(data) {
       };
       alert($('#'+item.id+item.name).val());
       $.ajax({
-        url: 'update.json',
+        url: '/update',
         type: 'POST',
-        data: 'pbook=' + JSON.stringify(phbook),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(phbook),
       success: function(res){
         alert(res);
       }

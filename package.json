@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Mi8ha5/phonebook/issues"
   },
-  "homepage": "https://github.com/Mi8ha5/phonebook#readme"
+  "homepage": "https://github.com/Mi8ha5/phonebook#readme",
+  "dependencies": {
+    "jsonfile": "^2.4.0"
+  }
 }
